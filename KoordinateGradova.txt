@@ -1,0 +1,93 @@
+const gradovi = [
+                            {
+                                naziv: "Beograd",
+                                koordinate: {lat:44.80401,lng:20.46513}
+                            },
+                            {
+                                naziv: "Kragujevac",
+                                koordinate: {lat:44.01667,lng:20.91667}
+                            },
+                            {
+                                naziv: "Nis",
+                                koordinate: {lat:43.32472,lng:21.90333}
+                            },
+                            {
+                                naziv: "Cacak",
+                                koordinate: {lat:43.89139,lng:20.34972}
+                            },
+                            {
+                                naziv: "Subotica",
+                                koordinate: {lat:46.1,lng:19.66667}
+                            },
+                            {
+                                naziv: "Jagodina",
+                                koordinate: {lat:43.97713,lng:21.26121}
+                            },
+                            {
+                                naziv: "Kragujevac",
+                                koordinate: {lat:44.01667,lng:20.91667}
+                            },
+                            {
+                                naziv: "Kraljevo",
+                                koordinate: {lat:43.72583,lng:20.68944}
+                            },
+                            {
+                                naziv: "Uzice",
+                                koordinate: {lat:43.85861,lng:19.84878}
+                            },
+                            {
+                                naziv: "Valjevo",
+                                koordinate: {lat:44.27513,lng:19.89821}
+                            },
+                            {
+                                naziv: "Krusevac",
+                                koordinate: {lat:43.58,lng:21.33389}
+                            },
+                            {
+                                naziv: "Leskovac",
+                                koordinate: {lat:42.99806,lng:21.94611}
+                            },
+                            {
+                                naziv: "Negotin",
+                                koordinate: {lat:44.22639,lng:22.53083}
+                            },
+                            {
+                                naziv: "Obrenovac",
+                                koordinate: {lat:44.65486,lng:20.20017}
+                            },
+                            {
+                                naziv: "Pirot",
+                                koordinate: {lat:43.15306,lng:22.58611}
+                            },
+                            {
+                                naziv: "Pozarevac",
+                                koordinate: {lat:44.62133,lng:21.18782}
+                            },
+                            {
+                                naziv: "Sabac",
+                                koordinate: {lat:44.74667,lng:19.69}
+                            },
+                            {
+                                naziv: "Smederevo",
+                                koordinate: {lat:44.66278,lng:20.93}
+                            },
+                            {
+                                naziv: "Sombor",
+                                koordinate: {lat:45.77417,lng:19.11222}
+                            },
+                            {
+                                naziv: "Trstenik",
+                                koordinate: {lat:43.61694,lng:21.0025}
+                            },
+                            {
+                                naziv: "Vrnjacka banja",
+                                koordinate: {lat:43.62725,lng:20.89634}
+                            },
+                            {
+                                naziv: "Zajecar",
+                                koordinate: {lat:43.90358,lng:22.26405}
+                            },
+                            {
+                                naziv: "Novi Sad",
+                                koordinate: {lat:45.25167,lng:19.83694}
+                            }]

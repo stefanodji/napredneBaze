@@ -1,0 +1,99 @@
+
+<h2 class="podNaslov">Opste karakteristike</h2>
+<div class="rasporediUnutra">
+
+    <div class="divce">
+        <label>Cimer ili cimerka</label>
+        <input type="text" value="<%= oglas.cimerOrCimerka %>" readonly class="podesiInputNajbolji">
+    </div> 
+    
+    <div class="divce">
+        <label>Tip objekta</label>
+        <input type="text" value="<%= oglas.tipObjekta %>" readonly class="podesiInputNajbolji">
+    </div>
+
+    <div class="divce">
+        <label>Nacin grejanja</label>
+        <input type="text" value="<%= oglas.nacinGrejanja %>" readonly class="podesiInputNajbolji">
+    </div>
+
+    <div class="divce">
+        <label><span class="narandzasta">*</span>Useljiv od: </label>
+        <input type="date" name="useljivOd" 
+            value="<%= oglas.useljivOd == null ? '' : 
+            oglas.useljivOd.toISOString().split("T")[0] %>" readonly class="podesiInputNajbolji">
+    </div>
+
+    <div class="divce">
+        <label><span class="narandzasta">*</span>Cena <span class="narandzasta">po cimeru</span></label>
+        <input type="text" name="cena" min="10" value="<%= oglas.cena %>" readonly class="podesiInputNajbolji">
+    </div>
+</div>
+
+<hr>
+
+<h2 class="podNaslov">Opremljenost stana</h2>
+<%- include("partials/opremljenostStana.ejs") %> 
+
+<hr>
+
+<h2 class="podNaslov">Slike stana</h2>
+<%- include("partials/imageGalery.ejs") %> 
+
+<hr>
+
+<h2 class="podNaslov">Lokacija</h2>
+<%- include("partials/gradOpstinaAdresa.ejs") %> 
+
+
+<div class="mapaWrapper">
+    <div id="Map" class="mapaIzgled"></div>
+</div>
+
+<hr>
+
+<script>
+
+ var sviTextInputi = document.querySelectorAll("input[type=text]");
+ for(var x=0;x<sviTextInputi.length;x++){
+     sviTextInputi[x].style.cursor = "context-menu";
+ }
+
+
+var mapa;
+
+
+function myMapMarker(){
+    //Kreiranje objekta za opcije koje ce biti prosledjene mapi :)
+    var options = {
+        zoom: 13,
+        center: centerPosition
+        //mapTypeId: "terrain"
+    }
+
+    //Kreiranje mape
+    mapa = new google.maps.Map(document.getElementById("Map"), options);
+    var koordZaMarker = JSON.stringify(<%= oglas.koordinateStana %>);
+    koordZaMarker = JSON.parse(koordZaMarker);
+    addMarker(koordZaMarker);
+}
+
+
+//Deo za pravljenje markera
+var marker;
+
+function addMarker(coords){
+        marker = new google.maps.Marker({
+        position: coords,
+        map: mapa,
+        clickable: false //hover afect none
+    });
+}
+
+
+ var centerPosition = JSON.stringify(<%= oglas.koordinateStana%>);
+ centerPosition = JSON.parse(centerPosition);
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtJ0PgwTG8HtBcG48X00dnH7NmjkwJMac&callback=myMapMarker" async defer></script>

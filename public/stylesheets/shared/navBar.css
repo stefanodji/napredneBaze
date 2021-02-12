@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins";
+    color: black;
+}
+
+body{
+    background-color: #e6e6e6;
+}
+
+#MainDiv{
+    margin-top: 95px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    background-color: gray;
+    box-shadow: 0 8px 6px -6px black;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
+    top: 0;
+}
+
+nav a{
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.NavAtributi a{
+    font-weight: 500;
+    color: black;
+    transition: all ease 0.3s;
+    padding: 0 15px;
+    display: block;
+    display: flex;
+    align-items: center;
+}
+
+.NavNazivApp{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.NavAtributi{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.NavAtributi2{
+    display: flex;
+    padding: 0 15px;
+    align-items: center;
+    transition: all ease 0.3s; /*na sta se odnosi promena, kako, koliko, delay*/
+}
+
+.NavAtributi a:hover{
+    background-color: #ff6600;
+    color: white;
+    cursor: pointer;
+}

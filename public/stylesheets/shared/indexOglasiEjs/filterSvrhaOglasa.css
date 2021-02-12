@@ -1,0 +1,59 @@
+.filterTip{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    height: 70px;
+}
+
+.filterTipPojedinacno{
+    width: 20%;
+    height: 100%;
+    background-color: #ff6600;
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    margin: 5px;
+    border-radius: 10px;
+    transition: all ease 0.3s;
+    cursor: pointer;
+}
+
+.filterTipPojedinacno p{
+    font-size: 17px;
+    color: white;
+}
+
+.filterTipPojedinacno:hover{
+    background-color: #cf5300;
+}
+
+
+.poPolaDiv{
+    display: flex;
+    justify-content: center;
+    padding-top: 0px;
+    align-items: center;
+    height: 50%;
+}
+
+.icon{
+    fill:white;
+}
+
+.flexWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.filteriManji{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    font-size: 17px;
+}

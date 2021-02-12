@@ -1,0 +1,40 @@
+<h1 class="naslov">Novi oglas</h1>
+
+<div class="oglas">
+    <form action="/oglasi/new/dodaoOglas" method="POST">
+        <% if (svrha === "tcis") {%>
+            <%- include("../partials/tipOglasaPartials/trazimCimeraImamStan.ejs") %>
+        <%} else if(svrha === "tcns") {%> 
+            <%- include("../partials/tipOglasaPartials/trazimCimeraNemamStan.ejs") %>
+        <% } else { %>
+            <%- include("../partials/tipOglasaPartials/izdajemStan.ejs") %> 
+        <% } %>
+        <div class="dugmadWrapper">
+            <button id="dodajOglasButton" class="buttonOglas">Dodaj oglas</button>
+            <a href="/korisnici/<%= korisnikId %>" class="buttonOglas">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<!-- <script>
+    var imaKoordinate = document.getElementById("saljiKoordinateMarkera");
+    console.log(imaKoordinate);
+
+    var dugme = document.getElementById("dodajOglasButton");
+    dugme.addEventListener("click", validacija);
+
+    function validacija()
+    {
+        if(imaKoordinate.value === null)
+        { 
+            alert("validation failed false");
+            return false;
+        }
+        else{
+            alert("validations passed");
+            return true;
+        }
+
+    
+    }
+</script> -->

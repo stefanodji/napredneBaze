@@ -1,0 +1,42 @@
+
+.profilWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.divProfil{
+    background-color: #cccccc;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #ff6600;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.infoProfile{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 10px;
+}
+
+.ceoProfilSaDugmetom{
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.licneInfo{
+    font-weight: 500;
+}
+

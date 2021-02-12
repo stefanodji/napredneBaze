@@ -1,0 +1,217 @@
+
+<input type="hidden" name="svrhaOglasa" value="<%= oglas.svrhaOglasa %>">
+<input type="hidden" name="korisnikId" value="<%= oglas.korisnikId %>">
+
+<h2 class="podNaslov">Opste karakteristike</h2>
+<div class="rasporediUnutra">
+
+    <div class="divce">
+        <label>Cimer ili cimerka</label>
+        <select name="cimerIliCimerka" class="podesiInputNajbolji">
+            <% if(oglas.cimerOrCimerka === "Svejedno") {%> 
+                <option selected label='<%=oglas.cimerOrCimerka%>' value="<%=oglas.cimerOrCimerka%>"></option>
+                <option  label='Musko' value="<%=oglas.cimerOrCimerka%>"></option>
+                <option  label='Zensko' value="<%=oglas.cimerOrCimerka%>"></option>
+            <% } else if(oglas.cimerOrCimerka === "Musko") {%> 
+                <option selected label="<%=oglas.cimerOrCimerka%>" value="<%=oglas.cimerOrCimerka%>">
+                <option  label='Zensko' value="<%=oglas.cimerOrCimerka%>"></option>
+                <option  label='Svejedno' value="<%=oglas.cimerOrCimerka%>"></option>
+            <% } else {%> 
+                <option selected label="<%=oglas.cimerOrCimerka%>" value="<%=oglas.cimerOrCimerka%>">
+                <option  label='Musko' value="<%=oglas.cimerOrCimerka%>"></option>
+                <option  label='Svejedno' value="<%=oglas.cimerOrCimerka%>"></option>
+            <% } %> 
+        </select>
+    </div>
+
+    <div class="divce">
+        <label>Tip objekat</label>
+        <select name="tipObjekta" class="podesiInputNajbolji">
+            <% if(oglas.tipObjekta === "Stan") {%> 
+                <option selected label='<%=oglas.tipObjekta%>' value="<%=oglas.tipObjekta%>"></option>
+                <option  label='Kuca' value="<%=oglas.tipObjekta%>"></option>
+            <% } else{%> 
+                <option selected label="<%=oglas.tipObjekta%>" value="<%=oglas.tipObjekta%>">
+                <option  label='Stan' value="<%=oglas.tipObjekta%>"></option>
+            <% }%> 
+        </select>
+    </div>
+
+    <div class="divce">
+        <label>Nacin grejanja</label>
+        <select name="nacinGrejanja" class="podesiInputNajbolji">
+            <% if(oglas.nacinGrejanja === "Centralno") {%> 
+                <option selected label='<%=oglas.nacinGrejanja%>' value="<%=oglas.nacinGrejanja%>">
+                    <option  label='Gas' value="<%=oglas.nacinGrejanja%>">
+                        <option  label='Elektricno' value="<%=oglas.nacinGrejanja%>">
+                            <option  label='Etazno' value="<%=oglas.nacinGrejanja%>">   
+
+            <% } else if(oglas.nacinGrejanja === "Gas"){%> 
+                <option selected label="<%=oglas.nacinGrejanja%>" value="<%=oglas.nacinGrejanja%>">
+                    <option label='Centralno' value="<%=oglas.nacinGrejanja%>">
+                        <option  label='Elektricno' value="<%=oglas.nacinGrejanja%>">
+                            <option  label='Etazno' value="<%=oglas.nacinGrejanja%>"> 
+
+                <% }else if(oglas.nacinGrejanja === "Elektricno"){%> 
+                <option selected label="<%=oglas.nacinGrejanja%>" value="<%=oglas.nacinGrejanja%>">
+                    <option label='Centralno' value="<%=oglas.nacinGrejanja%>">
+                        <option  label='Gas' value="<%=oglas.nacinGrejanja%>">
+                            <option  label='Etazno' value="<%=oglas.nacinGrejanja%>"> 
+
+                <%  }else if(oglas.nacinGrejanja === "Etazno"){%> 
+                <option selected label="<%=oglas.nacinGrejanja%>" value="<%=oglas.nacinGrejanja%>">
+                    <option label='Centralno' value="<%=oglas.nacinGrejanja%>">
+                        <option  label='Gas' value="<%=oglas.nacinGrejanja%>">
+                            <option  label='Elektricno' value="<%=oglas.nacinGrejanja%>"> 
+                <% } %> 
+        </select>
+    </div>
+
+    <div class="divce">
+        <label>Kad se mozes useliti: </label>
+        <input type="date" name="useljivOd" 
+                value="<%= oglas.useljivOd == null ? '' : 
+                oglas.useljivOd.toISOString().split("T")[0] %>" class="podesiInputNajbolji">
+    </div>
+
+    <div class="divce">
+        <label><span class="narandzasta">*</span>Cena kirije koju biste placali</label>
+        <input type="text" name="cena" min="10" value="<%= oglas.cena %>" class="podesiInputNajbolji">
+    </div>
+
+</div>
+
+<hr>
+
+<h2 class="podNaslov">Sta ti je potrebno da imas u stanu?</h2>
+<%- include("partials/opremljenostStana.ejs") %>
+
+<hr>
+
+<h2 class="podNaslov">Lokacija</h2>
+<%- include("partials/gradOpstinaAdresa.ejs") %>
+
+<hr>
+
+<div class="mapaWrapper">
+    <div id="Map" class="mapaIzgled"></div>
+</div>
+
+<div id="hiddenValue"></div>
+
+<hr>
+
+<script>
+    var mapa;
+    var zoom = 10;
+
+    function myMap(){
+    //Kreiranje objekta za opcije koje ce biti prosledjene mapi :)
+        var options = {
+        zoom: zoom,
+        center: centerPosition
+        //mapTypeId: "terrain"
+    }
+
+    //Kreiranje mape
+        mapa = new google.maps.Map(document.getElementById("Map"), options);
+    }
+
+
+
+    var centerPosition = <%- pocetneKoordZaDeoGrada %>;
+    
+    
+
+    var saljiKoordinateMarkera = document.createElement("input");
+    saljiKoordinateMarkera.name = "saljiKoordinateMarkera";
+    saljiKoordinateMarkera.id = "saljiKoordinateMarkera";
+    saljiKoordinateMarkera.type = "hidden";
+    saljiKoordinateMarkera.value = JSON.stringify({lat:0,lng:0});
+
+    document.getElementById("hiddenValue").appendChild(saljiKoordinateMarkera);
+    
+//Brisanje opcija za dodavanje opstine ili dela grada
+function removeOptions(selectElement) {
+   var i, L = selectElement.options.length - 1;
+   for(i = L; i >= 0; i--) {
+      selectElement.remove(i);
+   }
+}
+
+var select = document.getElementById("inputDeoGrada");
+for(var x=0;x<select.length;x++){
+    console.log("Ovo su Nis delovi: " + select[x].value);
+}
+
+var deloviGrada = <%- deloviGrada %>;
+var zaMenjanje = [];
+var idGradCheck = <%- JSON.stringify(gradZaId) %>;
+deloviGrada.forEach(deoGrada => {
+        if(deoGrada.gradId === idGradCheck){ //idGradCheck je ID grada u oglasu
+            var option = document.createElement("option");
+            option.text = deoGrada.naziv;
+            option.name = deoGrada.naziv;
+            Option.value = deoGrada.naziv;
+            //document.getElementById("inputDeoGrada").add(option);
+            zaMenjanje.push(deoGrada);
+            console.log(deoGrada.naziv);
+        }
+    });
+
+//console.log(deloviGrada);
+
+function addOptions(selectElement, idGrada){
+    zaMenjanje = [];
+    deloviGrada.forEach(deoGrada => {
+        if(deoGrada.gradId === idGrada){
+            var option = document.createElement("option");
+            option.text = deoGrada.naziv;
+            option.name = deoGrada.naziv;
+            option.value = deoGrada.naziv;
+            selectElement.add(option);
+            zaMenjanje.push(deoGrada);
+            //console.log(deoGrada);
+        }
+    });
+} 
+
+function ubaciOpstineZaDrugiGrad(selectElement, idGrada){
+    removeOptions(selectElement);
+    addOptions(selectElement, idGrada);
+}
+
+function izabraoZeljeniGrad2(selectedIndexOfInput){
+    //console.log(ponudjeniGradovi[selectedIndexOfInput].naziv);
+    zoom = 14;
+    mapaPositionRefresh(zaMenjanje[selectedIndexOfInput].koordinate); 
+}
+    
+    
+    function izabraoZeljeniGrad(selectedIndexOfInput){
+        //console.log("Ulazi ovde!" + ponudjeniGradovi[selectedIndexOfInput].naziv)
+        ubaciOpstineZaDrugiGrad(document.getElementById("inputDeoGrada"), ponudjeniGradovi[selectedIndexOfInput]._id);
+        zoom = 10;
+        mapaPositionRefresh(ponudjeniGradovi[selectedIndexOfInput].koordinate); 
+    }
+    
+    //Deo za options u select
+    var input = document.getElementById("input");
+    input.addEventListener("change", (event) => izabraoZeljeniGrad(event.target.selectedIndex));
+
+    var input2 = document.getElementById("inputDeoGrada");
+    input2.addEventListener("change", (event) => izabraoZeljeniGrad2(event.target.selectedIndex));
+
+    var ponudjeniGradovi = <%- nizGradova %>;
+
+    //Funkcija za refresovanje mesta koje mapa prikazuje -> trigeruje promena inputa
+    function mapaPositionRefresh(koordinate){
+    mapa.setCenter(koordinate);
+    mapa.setZoom(zoom);
+}
+
+    
+
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/reference/geometry#spherical" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtJ0PgwTG8HtBcG48X00dnH7NmjkwJMac&callback=myMap&libraries=geometry" async defer></script>

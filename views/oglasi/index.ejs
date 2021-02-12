@@ -1,0 +1,193 @@
+<div class="filterTip">
+    <div class="filterTipPojedinacno">
+        <div class="poPolaDIv" style="height: 40%;">
+            <svg class="icon" width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 14C9.55228 14 10 13.5523 10 13C10 12.4477 9.55228 12 9 12C8.44771 12 8 12.4477 8 13C8 13.5523 8.44771 14 9 14Z" ></path>
+                <path d="M16 13C16 13.5523 15.5523 14 15 14C14.4477 14 14 13.5523 14 13C14 12.4477 14.4477 12 15 12C15.5523 12 16 12.4477 16 13Z" ></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 11.1637 19.8717 10.3574 19.6337 9.59973C18.7991 9.82556 17.9212 9.94604 17.0152 9.94604C13.2921 9.94604 10.0442 7.91139 8.32277 4.89334C5.75469 6.22486 4 8.90751 4 12C4 16.4183 7.58172 20 12 20Z" ></path>
+            </svg>
+        </div>
+        <div class="poPolaDiv" style="height: 60%;">
+            <p>Trazim cimera</p>
+        </div>
+    </div>
+    <div class="filterTipPojedinacno">
+        <div class="poPolaDiv" style="height: 40%;">
+            <svg class="icon" width="30" height="30" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6 22.8787C4.34315 22.8787 3 21.5355 3 19.8787V9.87866C3 9.84477 3.00169 9.81126 3.00498 9.77823H3C3 9.20227 3.2288 8.64989 3.63607 8.24262L9.87868 2.00002C11.0502 0.828445 12.9497 0.828445 14.1213 2.00002L20.3639 8.24264C20.7712 8.6499 21 9.20227 21 9.77823H20.995C20.9983 9.81126 21 9.84477 21 9.87866V19.8787C21 21.5355 19.6569 22.8787 18 22.8787H6ZM12.7071 3.41423L19 9.70713V19.8787C19 20.4309 18.5523 20.8787 18 20.8787H15V15.8787C15 14.2218 13.6569 12.8787 12 12.8787C10.3431 12.8787 9 14.2218 9 15.8787V20.8787H6C5.44772 20.8787 5 20.4309 5 19.8787V9.7072L11.2929 3.41423C11.6834 3.02371 12.3166 3.02371 12.7071 3.41423Z"></path>
+            </svg>
+        </div>
+        <div class="poPolaDiv" style="height: 60%;">
+            <p>Trazim cimera i stan</p>
+        </div>
+    </div>
+    <div class="filterTipPojedinacno">
+        <div class="poPolaDIv" style="height: 40%;">
+            <svg class="icon" width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 15H19V17H17V15Z" ></path>
+                <path d="M19 11H17V13H19V11Z" ></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M13 7H23V21H1V3H13V7ZM8 5H11V7H8V5ZM11 19V17H8V19H11ZM11 15V13H8V15H11ZM11 11V9H8V11H11ZM21 19V9H13V11H15V13H13V15H15V17H13V19H21ZM3 19V17H6V19H3ZM3 15H6V13H3V15ZM6 11V9H3V11H6ZM3 7H6V5H3V7Z"></path>
+            </svg>
+        </div>
+        <div class="poPolaDiv" style="height: 60%;">
+            <p>Izdavanje stanova</p>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 20px;">
+    <hr>
+    <h2 style="padding: 15px;text-align: center;">Filteri</h2>
+    <div class="flexWrapper">
+        <div class="filteriManji">
+            <label>Po ceni</label>
+            <select id="selectFilterCena" class="podesiInputNajbolji">
+                <option selected value="-">-</option>
+                <option value="uzlazno">Uzlazno</option>
+                <option  value="silazno">Silazno</option>
+            </select>
+        </div>
+        <div class="filteriManji">
+            <label>Po datumu postavljanja</label>
+            <select id="selectFilterDatumPostavljanja" class="podesiInputNajbolji">
+                <option selected value="-">-</option>
+                <option value="uzlazno">Uzlazno</option>
+                <option  value="silazno">Silazno</option>
+            </select>
+        </div>
+        <div class="filteriManji">
+            <label>Po polu</label>
+            <select id="selectFilterDatumPostavljanja" class="podesiInputNajbolji">
+                <option selected value="svejedno">Svejedno</option>
+                <option value="musko">Musko</option>
+                <option  value="zensko">Zensko</option>
+            </select>
+        </div>
+    </div>
+    <div class="flexWrapper">
+        <div style="margin-top: 40px;">
+            <label>Izaberi grad -></label>
+            <a href="/" class="buttonOglas">Novi grad</a>
+        </div>
+    </div>
+</div>
+
+<div id="sviOglasi" class="sviOglasi" style="padding-top: 30px;">
+    <% oglasi.forEach(oglas => { %>
+        <a class="izgledOglasaAncor" href="/oglasi/<%= oglas._id %>">
+            <div class="insideAncor">
+
+                <% if (oglas.svrhaOglasa === "tcns") {%> 
+                    <div class="svrhaStanaParagraf">Trazim cimera i stan</div>
+                <% } else if (oglas.svrhaOglasa === "tcis") { %> 
+                    <div class="svrhaStanaParagraf">Trazim cimera</div>
+                <% } else {%> 
+                    <div class="svrhaStanaParagraf">Izdajem stan</div>
+                <% } %> 
+
+                <div class="belaBoja"><%= oglas.nazivGrada %></div>
+
+                <% if (oglas.svrhaOglasa === "tcns") {%> 
+                    <img height="150" width="200" src="<%=oglas.korisnikId.coverImagePath%>" alt="Slika se ne ucitava"> <%# Mozemo coverImageName, ali mi zelimo coverImagePath -> zato pravimo virtual varijablu u oglas.js modelu %> 
+                <% } else {%> 
+                    <% if (oglas.slike.length === 0) {%> 
+                        <img height="150" width="200" src="<%=oglas.coverImagePathDefault%>" alt=""> <%# Mozemo coverImageName, ali mi zelimo coverImagePath -> zato pravimo virtual varijablu u book.js modelu %> 
+                    <% } else {%>
+                        <img height="150" width="200" src="<%=oglas.coverImagePath[0]%>" alt="">
+                    <% } %> 
+                <% } %> 
+
+                <div class="belaBoja"><%= oglas.deoGradaOpstina %></div>
+                <div class="cenaBoja"><%= oglas.cena %><span class="cenaBoja"> €</span></div>
+            </div>
+        </a>
+    <% }) %>
+</div>
+
+<script>
+
+    var arrayOfCoverImagePath = <%- JSON.stringify(arrayOfCoverImagePath) %>;
+    var arrayOfCoverImagePathKorisnici = <%- JSON.stringify(arrayOfCoverImagePathKorisnici) %>;
+
+    var sviOglasiDiv = document.getElementById("sviOglasi");
+    sviOglasiDiv.className = "sviOglasi";
+
+
+    var oglasi = <%- JSON.stringify(oglasi) %>;
+
+
+    var filteri = document.getElementsByClassName("filterTipPojedinacno"); //vraca HTML collection
+    filteri[0].addEventListener("click", (event) => filtriranje("tcns"));
+    filteri[1].addEventListener("click", (event) => filtriranje("tcis"));
+    filteri[2].addEventListener("click", (event) => filtriranje("izst"));
+
+    function filtriranje(svrhaOglasa){
+        sviOglasiDiv.textContent = "";
+
+        for(var x = 0; x < oglasi.length; x++){
+            if(oglasi[x].svrhaOglasa === svrhaOglasa){
+
+                console.log("Za " + oglasi[x].deoGradaOpstina + "\n" + 
+                arrayOfCoverImagePathKorisnici[x])
+
+                var ancor = document.createElement("a");
+                ancor.className = "izgledOglasaAncor";
+                var insideAncorDiv = document.createElement("div");
+                insideAncorDiv.className = "insideAncor";
+                var obicanDiv0 = document.createElement("div");
+                var obicanDiv1 = document.createElement("div");
+                var obicanDiv2 = document.createElement("div");
+                var obicanDiv3 = document.createElement("div");
+                obicanDiv3.className = "cenaBoja";
+                var img = document.createElement("img");
+                
+                ancor.href = `/oglasi/${oglasi[x]._id}`;
+
+                if (oglasi[x].svrhaOglasa === "tcns") {
+                    obicanDiv0.innerHTML = "Trazim cimera i stan";
+                } else if (oglasi[x].svrhaOglasa === "tcis") {
+                    obicanDiv0.innerHTML = "Trazim cimera";
+                } else {
+                    obicanDiv0.innerHTML = "Izdajem stan";
+                }
+
+                obicanDiv0.className = "svrhaStanaParagraf";
+
+                obicanDiv1.innerHTML = oglasi[x].nazivGrada;
+                obicanDiv1.className = "belaBoja";
+                
+                if(oglasi[x].svrhaOglasa === "tcns"){
+                    img.src = `${arrayOfCoverImagePathKorisnici[x]}`;
+                } else{
+                    img.src = `${arrayOfCoverImagePath[x]}`;
+                }
+
+                img.height = "150";
+                img.width = "200";
+                img.alt = "";
+
+                obicanDiv2.innerHTML = oglasi[x].deoGradaOpstina;
+                obicanDiv2.className = "belaBoja";
+                
+
+                var span = document.createElement("span");
+                span.className = "cenaBoja";
+                span.innerHTML = " €";
+
+                obicanDiv3.innerHTML = oglasi[x].cena + span.innerHTML;
+                
+
+                insideAncorDiv.appendChild(obicanDiv0);
+                insideAncorDiv.appendChild(obicanDiv1);
+                insideAncorDiv.appendChild(img);
+                insideAncorDiv.appendChild(obicanDiv2);
+                insideAncorDiv.appendChild(obicanDiv3);
+
+                ancor.appendChild(insideAncorDiv);
+
+                sviOglasiDiv.appendChild(ancor);
+            }
+        }
+    }
+
+</script>

@@ -1,0 +1,11 @@
+<h1 class="naslov">Editovanje profila</h1>
+
+<div class="profil">
+    <form action="/korisnici/<%= korisnik.id %>?_method=PUT" method="POST">
+        <%- include("_form_fields") %> 
+        <div class="dugmadWrapper">
+            <button type="submit" class="buttonOglas">Save</button>
+            <a href="/korisnici/<%= korisnik.id %>" class="buttonOglas">Cancel</a>
+        </div>
+    </form>
+</div>

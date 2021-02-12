@@ -1,0 +1,17 @@
+<h1 class="naslov">Editovanje oglasa</h2>
+
+<div class="oglas">
+    <form action="/oglasi/<%= oglas.id %>?_method=PUT"  method="POST"> <%# <enctype="multipart/form-data"> Kaze serveru da nam je forma multipart sto znaci da ce se mozda slati i fajlovi tj. slike %> 
+        <% if (oglas.svrhaOglasa === "tcis") {%>
+            <%- include("../partials/editOglasePartials/trazimCimeraImamStan.ejs") %>
+        <%} else if(oglas.svrhaOglasa === "tcns") {%> 
+            <%- include("../partials/editOglasePartials/trazimCimeraNemamStan.ejs") %>
+        <% } else { %>
+            <%- include("../partials/editOglasePartials/izdajemStan.ejs") %> 
+        <% } %> 
+        <div class="dugmadWrapper">
+            <button type="submit" class="buttonOglas">Update</button>
+            <a href="/oglasi/<%= oglas.id %>" class="buttonOglas">Cancel</a>
+        </div>
+    </form>
+</div>

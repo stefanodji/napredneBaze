@@ -1,0 +1,11 @@
+<h1 class="naslov">Novi profil</h1>
+
+<div class="profil">
+    <form action="/korisnici/new" method="POST" style="width: 100%;">
+        <%- include("_form_fields") %> 
+        <div class="dugmadWrapper">
+            <button type="submit" class="buttonOglas">Create</button>
+            <a href="/korisnici" class="buttonOglas">Cancel</a>
+        </div>
+    </form>
+</div>

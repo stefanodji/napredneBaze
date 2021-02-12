@@ -1,0 +1,25 @@
+<div class="profilWrapperKorisniciIndex" >
+    <% korisnici.forEach(korisnik => { %> 
+        <div class="ceoProfilSaDugmicima">
+            <div class="divProfil2">
+                    <img height="150" width="200" src="<%=korisnik.coverImagePath%>" alt="">  
+                <div class="infoProfile">
+                    <h5>Ime: <span class="licneInfo"><%= korisnik.ime %></span> </h5>
+                    <h5>Prezime: <span class="licneInfo"><%= korisnik.prezime %></span> </h5>
+                    <h5>Rating: <span class="licneInfo">4.6</span> </h5>
+                </div>
+            </div>
+            <div class="flexRow">
+                <a href="/korisnici/<%= korisnik.id %>" class="buttonSviProfili">View profile</a>
+                <a href="/korisnici/<%= korisnik.id %>/edit" class="buttonSviProfili">Edit</a>
+                <form action="/korisnici/<%=korisnik.id%>?_method=DELETE" method="POST">
+                    <button type="submit" class="buttonOglas" class="buttonSviProfili">Delete</button>
+                </form>
+            </div>
+        </div>
+        
+    <% }) %> 
+</div>
+
+
+

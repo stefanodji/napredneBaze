@@ -1,0 +1,107 @@
+
+<div class="ceoProfilSaDugmetom">
+    <div class="divProfil">
+            <img height="150" width="200" src="<%=korisnik.coverImagePath%>" alt="">  
+        <div class="infoProfile">
+            <h5>Ime: <span class="licneInfo"><%= korisnik.ime %></span> </h5>
+            <h5>Prezime: <span class="licneInfo"><%= korisnik.prezime %></span> </h5>
+            <h5>Opis: <span class="licneInfo"><%= korisnik.opis %></span> </h5>
+            <h5 style="margin-top: 20px;">Rating: <span class="licneInfo">0.0</span> </h5>
+        </div>
+    </div>
+    <div class="dugmadWrapper" style="margin-top: 10px">
+        <a href="/korisnici/<%= korisnik.id %>/edit" class="buttonOglas">Edit</a>
+        <%- include("../partials/deleteForm", 
+                { url: `/korisnici/${korisnik.id}` })%>
+        <button id="svrhaOglasa" class="buttonOglasSvrha">Dodaj oglas</button>
+    </div>
+</div>
+
+
+<div id="divPrekrivac" style="display: none;">
+    <div class="divSredina">
+        <div class="divSvrha">
+            <form action="/oglasi/new" method="POST">
+                <input  name="svrhaOglasa" value="tcis" style="display: none;">
+                <input  name="korId" value="<%= korisnik.id %>" style="display: none;">
+                <button name="dugme" value="<%= korisnik.id %>" class="buttonOglasSvrha">Trazim cimera i imam stan</button>
+            </form>
+        </div>
+        <div class="divSvrha">
+            <form action="/oglasi/new" method="POST">
+                <input  name="svrhaOglasa" value="tcns" style="display: none;">
+                <input  name="korId" value="<%= korisnik.id %>" style="display: none;">
+                <button class="buttonOglasSvrha">Trazim cimera i nemam stan</button>
+            </form>
+        </div>
+        <div class="divSvrha">
+            <form action="/oglasi/new" method="POST">
+                <input  name="svrhaOglasa" value="izst" style="display: none;">
+                <input  name="korId" value="<%= korisnik.id %>" style="display: none;">
+                <button class="buttonOglasSvrha">Izdajem stan</button>
+            </form>
+        </div>
+        <div class="divSvrha" style="height: 35px;width: 70%;">
+            <button id="nazadDugme">Nazad</button>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+
+<% if(oglasi.length === 0){ %>
+    <h2>Nema trenutnih oglasa</h2>
+<% }else{ %> 
+    <div id="sviOglasi" class="sviOglasi" style="padding-top: 30px;">
+        <% oglasi.forEach(oglas => { %>
+            <a class="izgledOglasaAncor" href="/oglasi/<%= oglas._id %>">
+                <div class="insideAncor">
+    
+                    <% if (oglas.svrhaOglasa === "tcns") {%> 
+                        <div class="svrhaStanaParagraf">Trazim cimera i stan</div>
+                    <% } else if (oglas.svrhaOglasa === "tcis") { %> 
+                        <div class="svrhaStanaParagraf">Trazim cimera</div>
+                    <% } else {%> 
+                        <div class="svrhaStanaParagraf">Izdajem stan</div>
+                    <% } %> 
+    
+                    <div class="belaBoja"><%= oglas.nazivGrada %></div>
+    
+                    <% if (oglas.svrhaOglasa === "tcns") {%> 
+                        <img height="150" width="200" src="<%=oglas.korisnikId.coverImagePath%>" alt="Slika se ne ucitava"> <%# Mozemo coverImageName, ali mi zelimo coverImagePath -> zato pravimo virtual varijablu u oglas.js modelu %> 
+                    <% } else {%> 
+                        <% if (oglas.slike.length === 0) {%> 
+                            <img height="150" width="200" src="<%=oglas.coverImagePathDefault%>" alt=""> <%# Mozemo coverImageName, ali mi zelimo coverImagePath -> zato pravimo virtual varijablu u book.js modelu %> 
+                        <% } else {%>
+                            <img height="150" width="200" src="<%=oglas.coverImagePath[0]%>" alt="">
+                        <% } %> 
+                    <% } %> 
+    
+                    <div class="belaBoja"><%= oglas.deoGradaOpstina %></div>
+                    <div class="cenaBoja"><%= oglas.cena %><span class="cenaBoja"> €</span></div>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+<% } %> 
+
+    
+<script>
+    var addOglas = document.getElementById("svrhaOglasa");
+    addOglas.addEventListener("click", prikaziFormu);
+
+    var divPrekrivac = document.getElementById("divPrekrivac");
+
+    function prikaziFormu(){
+        divPrekrivac.style.display = "block";
+    }
+
+
+    var nazad = document.getElementById("nazadDugme");
+    nazad.addEventListener("click", vratiNazad);
+    
+    function vratiNazad(){
+        divPrekrivac.style.display = "none";
+    }
+</script>

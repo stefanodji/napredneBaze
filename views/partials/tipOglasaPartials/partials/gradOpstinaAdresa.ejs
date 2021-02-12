@@ -1,0 +1,23 @@
+<div class="rasporediUnutra">
+    <div class="divce">
+        <label>Naziv Grada</label>
+        <select id="input" name="nazivGrada" class="podesiInputNajbolji">
+            <% JSON.parse(ponudjeniGradovi).forEach( grad => { %>
+                    <option label='<%=grad.naziv%>' value='<%=grad.naziv%>'>
+            <% })%> 
+        </select>
+    </div>
+    <div class="divce">
+        <label>Opstina ili deo grada</label>
+        <select id="inputDeoGrada" name="deoGrada" class="podesiInputNajbolji">
+            <% JSON.parse(deloviGrada).forEach( deo => { %>
+                <% if(deo.gradId === "5efc09158c4df14098cb3b63") {%> <%# Id za Zajecar %> 
+                    <option label='<%=deo.naziv%>' value='<%=deo.naziv%>'>
+            <% }})%> 
+        </select>
+    </div>
+    <div class="divce">
+        <label>Adresa</label>
+        <input type="text" name="adresa" value="<%= oglas.cena %>" class="podesiInputNajbolji">
+    </div>
+</div>

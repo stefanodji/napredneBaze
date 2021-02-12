@@ -1,0 +1,85 @@
+<div style="margin-bottom: 20px; margin-left: 20px;">
+    <% if (oglas.slike.length != 0) {%> 
+        <div class="velikiDiv">
+
+            <div class="row">
+                <% oglas.coverImagePath.forEach(path => { %>
+                    <div class="column">
+                        <img src="<%=path%>" style="width: 100%;" height="150px" onclick="openModal();currentSlide('<%=oglas.coverImagePath.indexOf(path) + 1%>')" class="hover-shadow cursor">
+                    </div>
+                <%}); %>  
+            </div>
+
+            <div id="myModal" class="modal">
+                <span class="close cursor" onclick="closeModal()">&times;</span>
+                <div class="modal-content">
+            
+                    <% oglas.coverImagePath.forEach(path => { %>
+                        <div class="mySlides">
+                            <div class="numbertext"><%=oglas.coverImagePath.indexOf(path) + 1%> / <%= oglas.coverImagePath.length %></div>
+                            <img src="<%=path%>" style="width:100%; height: 500px;">
+                        </div>
+                    <%}); %>  
+                
+                
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+
+                
+                <% oglas.coverImagePath.forEach(path => { %>
+                    
+                    <div class="column">
+                        <img class="demo cursor" src="<%=path%>" style="width:100%" height="100px" onclick="currentSlide('<%=oglas.coverImagePath.indexOf(path) + 1%>')" alt="Nature and sunrise">
+                    </div>
+                <%}); %> 
+                </div>
+            </div>
+
+        </div>
+    <% } else { %>
+        <p>Nazalost, ovaj korisnik nije postavio slike stana :(</p>
+    <% } %> 
+</div>
+
+<script>
+    function openModal() {
+      document.getElementById("myModal").style.display = "block";
+    }
+    
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+    
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demo");
+      var captionText = document.getElementById("caption");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+      captionText.innerHTML = dots[slideIndex-1].alt;
+    }
+    </script>

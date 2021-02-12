@@ -1,0 +1,27 @@
+<div class="informacijeDiv" style="margin-top: 10px;">
+    <h2 class="podNaslov">Profilna slika</h2>
+    <input type="file" name="profilnaSlika" class="filepond">
+</div>
+
+<hr>
+
+<div class="informacijeDiv">
+    <h2 class="podNaslov">Ime</h2>
+    <input type="text" name="ime" value="<%= korisnik.ime %>" 
+    required class="podesiInput" placeholder="Ime">
+</div>
+
+<div class="informacijeDiv">
+    <h2 class="podNaslov">Prezime</h2>
+    <input type="text" name="prezime" value="<%= korisnik.prezime %>" 
+    required class="podesiInput" placeholder="Prezime">
+</div>
+
+
+
+<div class="informacijeDiv">
+    <h2 class="podNaslov">Napisi nesto kratko o sebi</h2>
+    <div>
+        <textarea name="opis" placeholder="Kratak opis"><%= korisnik.opis %></textarea>
+    </div>    
+</div>

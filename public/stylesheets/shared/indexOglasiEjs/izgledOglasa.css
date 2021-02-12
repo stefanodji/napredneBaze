@@ -1,0 +1,53 @@
+.sviOglasi{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.izgledOglasaAncor{
+    display: block;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    box-shadow: 0 0 0.7rem rgb(71, 71, 71);
+    background-color: gray;
+    cursor: pointer;
+    width: 220px;
+    height: 315px;
+    text-decoration: none;
+    margin: 23px;
+    transition: all ease 0.3s;
+}
+
+.izgledOglasaAncor:hover{
+    border: 3px solid #ff6600;
+}
+
+.insideAncor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+}
+
+.cenaBoja{
+    color: #ff6600;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.svrhaStanaParagraf{
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 20px;
+}
+
+.belaBoja{
+    color: white;
+}

@@ -1,0 +1,32 @@
+
+<div class="profilWrapper" >
+    <div class="ceoProfilSaDugmetom">
+        <div class="divProfil">
+                <img height="150" width="200" src="<%=korisnik.coverImagePath%>" alt="">  
+            <div class="infoProfile">
+                <h5>Ime: <span class="licneInfo"><%= korisnik.ime %></span> </h5>
+                <h5>Prezime: <span class="licneInfo"><%= korisnik.prezime %></span> </h5>
+                <h5>Rating: <span class="licneInfo">4.6</span> </h5>
+            </div>
+        </div>
+        <a href="/korisnici/<%= korisnik.id %>" class="buttonOglas">View profile</a>
+    </div>
+</div>
+
+<hr>
+
+<h1 class="naslov">Prikaz oglasa</h2>
+
+<div class="oglas">
+    <% if (oglas.svrhaOglasa === "tcis") {%>
+        <%- include("../partials/showOglasePartials/trazimCimeraImamStan.ejs") %>
+    <%} else if(oglas.svrhaOglasa === "tcns") {%> 
+        <%- include("../partials/showOglasePartials/trazimCimeraNemamStan.ejs") %>
+    <% } else { %>
+        <%- include("../partials/showOglasePartials/izdajemStan.ejs") %> 
+    <% } %> 
+    <div class="dugmadWrapper">
+        <a href="/oglasi/<%= oglas.id %>/edit" class="buttonOglas">Edit</a>
+        <%- include("../partials/deleteForm", { url: `/oglasi/${oglas.id}`}) %> 
+    </div>
+</div>

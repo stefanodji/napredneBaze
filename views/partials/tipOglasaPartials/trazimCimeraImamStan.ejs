@@ -1,0 +1,213 @@
+
+<input type="hidden" name="svrhaOglasa" value="<%= svrha %>">
+<input type="hidden" name="korisnikId" value="<%= korisnikId %>">
+
+<h2 class="podNaslov">Opste karakteristike</h2>
+<div class="rasporediUnutra">
+    <div class="divce">
+        <label>Cimer ili cimerka</label>
+        <select name="cimerIliCimerka" class="podesiInputNajbolji">
+            <option>Svejedno</option>
+            <option>Musko</option>
+            <option>Zensko</option>
+        </select>
+    </div> 
+
+    <div class="divce">
+        <label>Tip objekta</label>
+        <select name="tipObjekta" class="podesiInputNajbolji">
+            <option>Stan</option>
+            <option>Kuca</option>
+        </select>
+    </div>
+
+    <div class="divce">
+        <label>Nacin grejanja</label>
+        <select name="nacinGrejanja" class="podesiInputNajbolji">
+            <option>Centralno</option>
+            <option>Gas</option>
+            <option>Elektricno</option>
+            <option>Etazno</option>
+        </select>
+    </div>
+
+    <div class="divce">
+        <label><span class="narandzasta">*</span>Useljiv od: </label>
+        <input type="date" name="useljivOd" class="podesiInputNajbolji"
+                value="<%= oglas.useljivOd == null ? '' : 
+                oglas.useljivOd.toISOString().split("T")[0] %>">
+    </div>
+
+    <div class="divce">
+        <label><span class="narandzasta">*</span>Cena <span class="narandzasta">po cimeru</span></label>
+        <input type="text" name="cena" min="10" value="<%= oglas.cena %>" class="podesiInputNajbolji">
+    </div>
+</div>
+
+<hr>
+
+<h2 class="podNaslov">Opremljenost stana</h2>
+<%- include("partials/opremljenostStana.ejs") %> 
+
+<hr>
+
+<h2 class="podNaslov">Ubaci slike</h2>
+<%- include("partials/ubaciSlike.ejs") %> 
+
+<hr>
+
+<h2 class="podNaslov">Lokacija</h2>
+<%-include("partials/gradOpstinaAdresa.ejs")%>
+
+
+<div class="mapaWrapper">
+    <div id="Map" class="mapaIzgled"></div>
+</div>
+<div id="hiddenValue"></div>
+
+<hr>
+
+<script>
+
+
+var mapa;
+
+
+var saljiKoordinateMarkera = document.createElement("input");
+saljiKoordinateMarkera.name = "saljiKoordinateMarkera";
+saljiKoordinateMarkera.id = "saljiKoordinateMarkera";
+saljiKoordinateMarkera.type = "hidden";
+saljiKoordinateMarkera.value = null;
+
+document.getElementById("hiddenValue").appendChild(saljiKoordinateMarkera);
+
+var zoom = 10;
+
+function myMapMarker(){
+    //Kreiranje objekta za opcije koje ce biti prosledjene mapi :)
+    var options = {
+        zoom: zoom,
+        center: centerPosition
+        //mapTypeId: "terrain"
+    }
+
+    //Kreiranje mape
+    mapa = new google.maps.Map(document.getElementById("Map"), options);
+
+    google.maps.event.addListener(mapa, 'click', function(event) {
+        console.log("Koordinate su: " + event.latLng);
+        let myLatLng = event.latLng;
+        //var lat = myLatLng.lat();
+        //var lng = myLatLng.lng();
+        //centarKrugaKoordinate = myLatLng;
+        klikNaMapu(myLatLng);
+
+        //addMarker(event.latLng); Ovo apsolutno radi
+    });
+}
+
+//Sta radimo kada kliknemo na mapu
+function klikNaMapu(coordsObjekat){
+    if(marker == null){ //Ako nema markera, pravimo ga
+        addMarker(coordsObjekat);        
+        saljiKoordinateMarkera.value = JSON.stringify(coordsObjekat);
+        console.log("Ovo su koordinate markera " + saljiKoordinateMarkera.value);
+    }
+    else{ //Ako ima markera, brisemo ga
+        saljiKoordinateMarkera.value = null;
+        marker.setMap(null);
+        marker = null;
+    }
+}
+
+
+
+//Deo za pravljenje markera
+var marker;
+
+function addMarker(coords){
+        marker = new google.maps.Marker({
+        position: coords,
+        map: mapa,
+        clickable: false //hover afect none
+    });
+}
+
+//Brisanje opcija za dodavanje opstine ili dela grada
+function removeOptions(selectElement) {
+   var i, L = selectElement.options.length - 1;
+   for(i = L; i >= 0; i--) {
+      selectElement.remove(i);
+   }
+}
+
+var deloviGrada = <%- deloviGrada %>;
+var zaMenjanje = [];
+deloviGrada.forEach(deoGrada => {
+        if(deoGrada.gradId === "5efc09158c4df14098cb3b63"){ //Ovo je za Zajecar
+            var option = document.createElement("option");
+            option.text = deoGrada.naziv;
+            option.name = deoGrada.naziv;
+            Option.value = deoGrada.naziv;
+            //document.getElementById("inputDeoGrada").add(option);
+            zaMenjanje.push(deoGrada);
+            console.log(deoGrada.naziv);
+        }
+    });
+
+//console.log(deloviGrada);
+
+function addOptions(selectElement, idGrada){
+    zaMenjanje = [];
+    deloviGrada.forEach(deoGrada => {
+        if(deoGrada.gradId === idGrada){
+            var option = document.createElement("option");
+            option.text = deoGrada.naziv;
+            option.name = deoGrada.naziv;
+            option.value = deoGrada.naziv;
+            selectElement.add(option);
+            zaMenjanje.push(deoGrada);
+            console.log(deoGrada);
+        }
+    });
+} 
+
+function ubaciOpstineZaDrugiGrad(selectElement, idGrada){
+    removeOptions(selectElement);
+    addOptions(selectElement, idGrada);
+}
+
+function izabraoZeljeniGrad(selectedIndexOfInput){
+    //console.log(ponudjeniGradovi[selectedIndexOfInput].naziv);
+    ubaciOpstineZaDrugiGrad(document.getElementById("inputDeoGrada"), ponudjeniGradovi[selectedIndexOfInput]._id);
+    zoom = 10;
+    mapaPositionRefresh(ponudjeniGradovi[selectedIndexOfInput].koordinate); 
+}
+
+function izabraoZeljeniGrad2(selectedIndexOfInput){
+    //console.log(ponudjeniGradovi[selectedIndexOfInput].naziv);
+    zoom = 14;
+    mapaPositionRefresh(zaMenjanje[selectedIndexOfInput].koordinate); 
+}
+
+//Deo za options u select
+var input = document.getElementById("input");
+input.addEventListener("change", (event) => izabraoZeljeniGrad(event.target.selectedIndex));
+
+var input2 = document.getElementById("inputDeoGrada");
+input2.addEventListener("change", (event) => izabraoZeljeniGrad2(event.target.selectedIndex));
+
+ var ponudjeniGradovi = <%- ponudjeniGradovi %>;
+
+ var centerPosition = ponudjeniGradovi[0].koordinate;
+
+
+
+//Funkcija za refresovanje mesta koje mapa prikazuje -> trigeruje promena inputa
+function mapaPositionRefresh(koordinate){
+    mapa.setCenter(koordinate);
+    mapa.setZoom(zoom);
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtJ0PgwTG8HtBcG48X00dnH7NmjkwJMac&callback=myMapMarker" async defer></script>

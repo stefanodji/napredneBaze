@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import "shared/navBar.css";
+@import "shared/home.css";
+@import "shared/divPokrivac.css";
+@import "shared/indexOglasiEjs/filterSvrhaOglasa.css";
+@import "shared/indexOglasiEjs/izgledOglasa.css";
+@import "shared/imageGalery.css";
+@import "shared/oglasi/izlgedOglasa.css";
+@import "shared/oglasi/izgledProfilaNaOglasu.css";
+@import "shared/korisniciIndex.css";
+@import "shared/korisnici/izgledProfilaKorisnika.css";
+
+:root{
+    
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
+
+body{
+    background-color: #e6e6e6;
+    padding-top: 50px;
+    margin: 0;
+}
+
+.filepond--panel-root {
+	border-radius: 1em;
+    background-color: #edf0f4;
+}
+
+.filepond--label-action {
+    text-decoration-color: #ff6600;
+}
+
+.filepond--file-action-button {
+    background-color: rgba(209, 209, 209, 0.5);
+}
+
+
+.ispred{
+    z-index: 2;
+    width: 40px;
+    height: 15px;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 2px 4px;
+    transition: all ease 0.3s;
+}
+
+.ispred:hover{
+    background-color: gray;
+}
